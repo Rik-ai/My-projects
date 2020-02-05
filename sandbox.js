@@ -1,22 +1,20 @@
-//logical operators - OR || and AND &&
+// break and continue
 
-const password = 'p@ssword';
+const scores = [50, 25, 0, 30, 100, 20, 10];
 
-if (password.length >= 12 && password.includes('@')) {
-    console.log('that password is a strong');
-} else if (password.length >= 8 || password.includes('@') && password.length > 5) {
-    console.log(' that password is long enough!');
-} else {
-    console.log('password is not long enough!');
+for (let i = 0; i < scores.length; i++) {
+
+    if (scores[i] === 0) {
+        continue; /*если условие достигнуто, всё равно продолжить цикл*/
+    }
+
+
+    console.log('your score: ', scores[i]);
+
+    if (scores[i] === 100) {
+
+        console.log('congrats, you got a top score!');
+        break; /*если условие достигнуто закончить цикл*/
+    }
+
 }
-
-//logical NOT (!)
-
-let user = false; /*если у нас user =false, с помощью (!) мы можем изменить на user=true*/
-
-if (!user) {
-    console.log('you must be logged in to continue');
-}
-
-console.log(!true);
-console.log(!false);
