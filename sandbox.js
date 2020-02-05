@@ -1,20 +1,40 @@
-// break and continue
+//using if statements для того что бы не писать  каждую строку кода отдельно, можно использовать switch
+// if(grade ==='A'){
 
-const scores = [50, 25, 0, 30, 100, 20, 10];
+// }else if(grade ==='B'){
 
-for (let i = 0; i < scores.length; i++) {
+// }else if(grade ==='C'){
 
-    if (scores[i] === 0) {
-        continue; /*если условие достигнуто, всё равно продолжить цикл*/
-    }
+// }else if(grade ==='D'){
+
+// }else if(grade ==='E'){
+
+// }else {
+
+// }
 
 
-    console.log('your score: ', scores[i]);
+// switch statements - метод работает только со строками, с числами не работает
+const grade = 'C';
 
-    if (scores[i] === 100) {
-
-        console.log('congrats, you got a top score!');
-        break; /*если условие достигнуто закончить цикл*/
-    }
-
+switch (grade) {
+    case 'A':
+        console.log('you got an A!');
+        break;
+    case 'B':
+        console.log('you got an B!');
+        break;
+    case 'C':
+        console.log('you got an C!');
+        break;
+    case 'D':
+        console.log('you got an D!');
+        break;
+    case 'E':
+        console.log('you got an E!');
+        break;
+    default:
+        console.log('not a valid grade!')
 }
+
+
