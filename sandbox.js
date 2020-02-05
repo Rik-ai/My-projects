@@ -1,14 +1,8 @@
-//while loops такой же цикл как и for loops отличие только в синтаксисе
-const names = ['shaun', 'mario', 'luigi'];
-// let i = 0; /* i - должно существовать в не цикла*/
+// do while loops - нужен для того что бы запустить цикл хотя бы один раз даже если условие не выполняется
+let i = 5;
 
-// while (i < 5) {
-//     console.log('in loop:', i)
-//     i++;
-// }
-
-let i = 0;
-while (i < names.length) {
-    console.log(names[i]);
+do {
+    console.log('val of i is: ', i);
     i++;
 }
+while (i < 5);
