@@ -1,40 +1,20 @@
-//using if statements для того что бы не писать  каждую строку кода отдельно, можно использовать switch
-// if(grade ==='A'){
+// variable & block scope/переменные и области блока
+let age = 30;
 
-// }else if(grade ==='B'){
+//let age = 50; /*так не получится переопределить переменную*/
 
-// }else if(grade ==='C'){
+if (true) {
+    //age = 40; /*так мы не переопределяем переменную а просто изменяем её обращяясь к let age = 30; (изменяется в обоих блоках кода)*/
+    let age = 40; /*так можно переопределить переменную внутри блока кода, но не снаружи*/
+    let name = 'shaun';
+    console.log('inside 1st code block: ', age, name); /*мы можем получить доступ к переменной которая находится в глобальной области видимости в не кода*/
+    if (true) {
+        let age = 50;
+        console.log('inside 2st code block: ', age);
 
-// }else if(grade ==='D'){
-
-// }else if(grade ==='E'){
-
-// }else {
-
-// }
+    }
 
 
-// switch statements - метод работает только со строками, с числами не работает
-const grade = 'C';
-
-switch (grade) {
-    case 'A':
-        console.log('you got an A!');
-        break;
-    case 'B':
-        console.log('you got an B!');
-        break;
-    case 'C':
-        console.log('you got an C!');
-        break;
-    case 'D':
-        console.log('you got an D!');
-        break;
-    case 'E':
-        console.log('you got an E!');
-        break;
-    default:
-        console.log('not a valid grade!')
 }
 
-
+console.log('outside code block: ', age, name);
