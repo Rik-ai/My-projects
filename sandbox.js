@@ -1,23 +1,14 @@
-//for loops
+//while loops такой же цикл как и for loops отличие только в синтаксисе
+const names = ['shaun', 'mario', 'luigi'];
+// let i = 0; /* i - должно существовать в не цикла*/
 
-for (let i = 0; i < 5; i++) { /*{} - содержится код петли (цикла)
-let i = 0 - переменная инициализации, похоже на счётчик и отслеживает сколько раз код запустится в петле
-i < 5 - это условие оценивает true or fals, если true, код будет выполнятся, если fals то не будет
-i++ - окончательное выражение будет выполнятся каждый раз в конце кода, т.е. добавлять +1*/
+// while (i < 5) {
+//     console.log('in loop:', i)
+//     i++;
+// }
 
-    console.log('in loop:', i);
-
-}
-console.log('loop finished');
-
-const =['shaun', 'mario', 'luigi'];
-
-for (let i = 0; i < names.lenght; i++) { /*если мы к примеру не знаем сколько имён в массиве, то names.lenght покажет их всё*/
+let i = 0;
+while (i < names.length) {
     console.log(names[i]);
-    let html = `<div>${names[i]}</div>`;
-    console.log(html);
+    i++;
 }
-
-/*итерация это циклический перебор массива, один цикл - одна итерация*/
-
-
