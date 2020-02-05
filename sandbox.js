@@ -1,8 +1,24 @@
-// do while loops - нужен для того что бы запустить цикл хотя бы один раз даже если условие не выполняется
-let i = 5;
+// else if statements
 
-do {
-    console.log('val of i is: ', i);
-    i++;
+// const age = 25;
+
+// if (age > 20) {
+//     console.log('you are over 20 years old');
+// }
+
+// const ninjas = ['shaun', 'ryu', 'chun-li', 'yoshi'];
+
+// if (ninjas.length > 3) {
+
+//     console.log("that's a lot of ninjas");
+// }
+
+const password = 'p@ssword1234';
+/*множественный цикл который проверяет разные условия по порядку*/
+if (password.length >= 12) {
+    console.log('that password is a strong');
+} else if (password.length >= 8) {
+    console.log(' that password is long enough!');
+} else {
+    console.log('password is not long enough!');
 }
-while (i < 5);
