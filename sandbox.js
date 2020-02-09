@@ -6,16 +6,26 @@ let user = { /*Это обьект*/
     age: 30,
     email: 'crystal@gmail.com',
     location: 'kyiv',
-    blogs: ['why mac & cheese rules', '10 things to make with marmite']
-}
+    blogs: ['why mac & cheese rules', '10 things to make with marmite'],
+    /*methods*/
+    login: function () {
+        console.log('the user logged in');
+    },
+    logout: function () {
+        console.log('the user logged out');
+    },
+    logBlogs() { /*для того что бы написать код проще можно убрать :function*/
+        console.log('this user has written the following blogs:');
+        this.blogs.forEach(blog => { /*this - ключевое слово устанавливает быть обьектом*/
+            console.log(blog);
+        })
+    }
+};
 
-console.log(user);
-console.log(user.name); /*получим доступ к свойству name*/
+user.logBlogs();
+console.log(this);
+user.login();
+user.logout();
 
-
-user.age = 35;/*можем изменить или обновить свойство обьекта*/
-console.log(user.age);
-
-console.log(user['email']); /*так же можно получить доступ к свойству*/
-user['name'] = 'chun-li'; /*так же можем изменить или обновить свойство обьекта*/
-console.log(user['name']);
+const name = 'mario';
+name.toUpperCase();
