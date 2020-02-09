@@ -1,30 +1,15 @@
-// callbacks & foreach
+//get a reference to the 'ul'
+const ul = document.querySelector('.people');
 
 
-// const myFunc = (callbackFunc) => {
-//     //do something
-//     let value = 50;
-//     callbackFunc(value);
-// };
+const people = ['mario', 'luigi', 'rui', 'shaun', 'chun-li'];
 
-// myFunc(function(value){
-//     //do something
-//     console.log(value);
-// });
+let html = ``;
 
-
-
-let people = ['mario', 'lluigi', 'rui', 'shaun', 'chun-li'];
-//foreach - метод который перебирает массив как цикл
-
-const logPerson = (person, index) => {
-    console.log(`${index} - hello ${person}`)
-};
-people.forEach(logPerson);
-
-
-/*то же самое что и выше*/
-people.forEach((person, index) => { /*callback функция в нутри foreach функции*/
-    console.log(index, person);
-
+people.forEach(person => {
+    //create html template
+    html += `<li style="color: purple">${person}</li>` /*для каждого имени добавляем фрагмент этого шаблона html*/
 });
+
+console.log(html);
+ul.innerHTML = html;
