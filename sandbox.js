@@ -1,24 +1,24 @@
-// Math object
+// primitive values
 
 
-console.log(Math);
-console.log(Math.PI);
-console.log(Math.E);
+// let scoreOne = 50;
+// let scoreTwo = scoreOne;
+
+// console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
+
+
+// scoreOne = 100; /*когда мы меняем значение одного из примитивных значений, которые хранятся в stack значение второго не меняется*/
+// console.log(`scoreOne: ${scoreOne}`, `scoreTwo: ${scoreTwo}`);
 
 
 
-const area = 5.5;
+//reference values
+
+const userOne = { name: 'ryu', age: 30 };
+const userTwo = userOne;
+
+console.log(userOne, userTwo);
 
 
-console.log(Math.round(area)); /*round - округление числа*/
-console.log(Math.floor(area)); /* floor - округляет в меньшую сторону*/
-console.log(Math.ceil(area)); /*ceil - округляет в большую сторону*/
-console.log(Math.trunc(area)); /*trunc - убирает остаток*/
-
-
-//random numbers
-
-const random = Math.random();
-
-console.log(random);
-console.log(Math.round(random * 100));
+userOne.age = 40; /*когда мы меняем значение одного из референсных значений которые хранятся в heat, значение второго так же меняется*/
+console.log(userOne, userTwo);
