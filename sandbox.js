@@ -1,15 +1,30 @@
-const name = 'shaun';
+// callbacks & foreach
 
 
-//functions - определены на обьекте или типе данных в самой фнкции
+// const myFunc = (callbackFunc) => {
+//     //do something
+//     let value = 50;
+//     callbackFunc(value);
+// };
 
-const greet = () => "hello";
+// myFunc(function(value){
+//     //do something
+//     console.log(value);
+// });
 
-let resultOne = greet();
-console.log(resultOne);
 
 
-//methods - определены на обьекте или типе данных
+let people = ['mario', 'lluigi', 'rui', 'shaun', 'chun-li'];
+//foreach - метод который перебирает массив как цикл
 
-let resultTwo = name.toUpperCase(); /*то же функция только называется методом с использованием точечной записи*/
-console.log(resultTwo);
+const logPerson = (person, index) => {
+    console.log(`${index} - hello ${person}`)
+};
+people.forEach(logPerson);
+
+
+/*то же самое что и выше*/
+people.forEach((person, index) => { /*callback функция в нутри foreach функции*/
+    console.log(index, person);
+
+});
