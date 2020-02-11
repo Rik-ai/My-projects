@@ -1,13 +1,25 @@
-// get an element by ID
-const title = document.getElementById('page-title');
-console.log(title);
+const para = document.querySelector('p');
 
-//get elements by their class name
-const errors = document.getElementsByClassName('error');
-console.log(errors);
-console.log(errors[0]);
+//console.log(para.innerText); /* .innerText позволяет получить текст который находится в элементе*/
 
-//get elements by their tag name
-const paras = document.getElementsByTagName('p');
-console.log(paras);
-console.log(paras[1]);
+//para.innerText = 'ninjas are sucks'; /*можно таким образом сменить текст в элементе*/
+//para.innerText += ' ninjas are sucks'; /*если мы хотим добавить новый текст к старому надо использовать (+=) и поставить пробел перед новым текстом*/
+
+const paras = document.querySelectorAll('p');
+/*можно менять текст сразу в нескольких элементах*/
+// paras.forEach(para => {
+//     console.log(para.innerText);
+//     para.innerText += ' new text';
+// });
+
+const content = document.querySelector('.content');
+
+//console.log(content.innerHTML);
+//content.innerHTML += '<h2> THIS IS NEW H2</h2>'; /*полностью переписывает содержимое элемента и меняет сам элемент*/ 
+
+/*выводим массив имён в шаблон HTML для каждого из них*/
+const people = ['mario', 'luigi', 'yoshi'];
+
+people.forEach(person => {
+    content.innerHTML += `<p>${person}</p>`;
+});
