@@ -1,12 +1,30 @@
-const title = document.querySelector('h1');
+// const content = document.querySelector('p');
 
-//title.setAttribute('style', 'margin: 50px'); /*у сет атрибут есть недостаток, он перезаписывает полностью свойства элемента*/
+// console.log(content.classList); /*можно увидеть класы елемента*/
 
-console.log(title.style);
-console.log(title.style.color);
+// content.classList.add('error'); /*добавить класс элементу*/
+// content.classList.remove('error'); /*удалить класс элемента*/
 
-title.style.margin = '50px'; /*используем, что бы добавить свойство элементу*/
-title.style.color = 'crimson';
-title.style.backgroundColor = 'green';
-title.style.fontSize = '40px';
-title.style.margin = ''; /*если нужно удалить свойство, просто необходимо поставить пустые кавычки*/
+// content.classList.add('success');
+
+
+//Задача: сделать так что бы все строки содержащие error получили клас error, а все строки содержащие success получили клас success
+
+const paras = document.querySelectorAll('p');
+
+paras.forEach(p => {
+    //console.log(p.textContent);/*.innerText показывает только видимый текст в элементе, по этому надо использовать .textContent*/
+    if (p.textContent.includes('error')) {
+        p.classList.add('error');
+    }
+    if (p.textContent.includes('success')) {
+        p.classList.add('success');
+
+    }
+})
+//переключение класов toggle
+
+const title = document.querySelector('.title');
+
+title.classList.toggle('test');
+title.classList.toggle('test'); /*если запустить повторно, то он удаляется*/
