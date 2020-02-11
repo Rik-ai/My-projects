@@ -1,30 +1,26 @@
-// const content = document.querySelector('p');
+//Relationship Parents-Child
 
-// console.log(content.classList); /*можно увидеть класы елемента*/
+const article = document.querySelector('article'); /*так как это будет HTMLCollection мы не можем применять forEach, необходимо преобразовать в массив*/
+// console.log(article.children);
 
-// content.classList.add('error'); /*добавить класс элементу*/
-// content.classList.remove('error'); /*удалить класс элемента*/
+// Array.from(article.children); /*не обязательно писать отдельными строками, можно сразу в консольлог*/
+// console.log(Array.from(article.children));/*это преобразование не деструктивный метод, это новое значение*/
+// console.log(article.children);/*проверка, что это всё ещё HTMLCollection*/
 
-// content.classList.add('success');
+// Array.from(article.children).forEach(child => {
+//     child.classList.add('article-element');
+// });
+
+const title = document.querySelector('h2');
+
+console.log(title.parentElement); /*.parentElement находит родителя элемента*/
+console.log(title.parentElement.parentElement); /*находит родителя, елемента родителя(Родитель->родитель->ребёнок)*/
+
+//Siblings - братья и сёстры
+console.log(title.nextElementSibling); /*находит следующего ребёнка родителя*/
+console.log(title.previousElementSibling);/*находит предыдущего ребёнка родителя*/
 
 
-//Задача: сделать так что бы все строки содержащие error получили клас error, а все строки содержащие success получили клас success
+//chaining
 
-const paras = document.querySelectorAll('p');
-
-paras.forEach(p => {
-    //console.log(p.textContent);/*.innerText показывает только видимый текст в элементе, по этому надо использовать .textContent*/
-    if (p.textContent.includes('error')) {
-        p.classList.add('error');
-    }
-    if (p.textContent.includes('success')) {
-        p.classList.add('success');
-
-    }
-})
-//переключение класов toggle
-
-const title = document.querySelector('.title');
-
-title.classList.toggle('test');
-title.classList.toggle('test'); /*если запустить повторно, то он удаляется*/
+console.log(title.nextElementSibling.parentElement.children);
