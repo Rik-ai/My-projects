@@ -1,31 +1,18 @@
-const ul = document.querySelector('ul');
-const button = document.querySelector('button');
+const copy = document.querySelector('.copy-me');
 
-button.addEventListener('click', () => {
-    const li = document.createElement('li');
-    li.textContent = 'something new to do';
-    ul.prepend(li);
+copy.addEventListener('copy', () => {
+    console.log('Wow! my content is copyright'); /*при копировании обьекта выдаёт в консоль текст*/
+});
+
+const box = document.querySelector('.box');
+
+box.addEventListener('mousemove', e => {
+    //console.log(e);
+    //console.log(e.offsetX, e.offsetY);/*показывает координаты курсора в консоли*/
+    box.textContent = `x pos - ${e.offsetX}  y pos - ${e.offsetY}`; /*показываек координаты курсора в боксе*/
 });
 
 
-// const items = document.querySelectorAll('li');
-
-// items.forEach(item => {
-//     item.addEventListener('click', event => {
-//         console.log('events in LI');
-//         event.stopPropagation();
-//         event.target.remove(); /*удаляет елемент на странице когда мы на него нажимаем*/
-
-//     });
-// });
-
-ul.addEventListener('click', e => { /*теперь новые теги (li) добавляются так как будто они прописаны в HTML файле*/
-    // console.log('events in UL');
-    console.log(e.target);
-    if (e.target.tagName === 'LI') {
-        e.target.remove();
-    }
+document.addEventListener('wheel', e => {
+    console.log(e.pageX, e.pageY); /*показывает координаты курсора при пролистывании страницы*/
 });
-
-
-//ТОЛКОМ НЕ ПОНЯЛ ЭТОТ УРОК
