@@ -5,27 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document Object Model (DOM)</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Forms & Form Events</title>
+    <style>
+        body {
+            background: #eee;
+        }
+
+        form {
+            max-width: 200px;
+            margin: 40px auto;
+            background: white;
+            padding: 10px;
+        }
+
+        input {
+            display: block;
+            margin: 10px auto;
+            padding: 4px;
+        }
+    </style>
 </head>
 
 <body>
 
-    <button>click me</button>
-
-    <div class="popup-wrapper">
-
-        <div class="popup">
-            <div class="popup-close">x</div>
-            <div class="popup-content">
-                <h2>NINJA SALE!!</h2>
-                <p>+1500% of all ninja clons, don't miss out!!</p>
-                <a href="#">viev clons</a>
-            </div>
-
-        </div>
-
-    </div>
+    <form class="signup-form">
+        <input type="text" id="username" placeholder="username">
+        <input type="submit" value="submit">
+    </form>
 
 
     <script src='sandbox.js'></script>

@@ -1,16 +1,8 @@
-const button = document.querySelector('button');
-const popup = document.querySelector('.popup-wrapper');
-const close = document.querySelector('.popup-close');
+const form = document.querySelector('.signup-form');
+//const username = document.querySelector('#username');
 
-button.addEventListener('click', () => {
-    popup.style.display = 'block';
-});
-
-close.addEventListener('click', () => {
-    popup.style.display = 'none';
-});
-
-
-popup.addEventListener('click', () => {
-    popup.style.display = 'none';
+form.addEventListener('submit', e => {
+    e.preventDefault();/*страница не обновляется при нажатии на кнопку*/
+    // console.log(username.value);/*выводит в консоли юсернейм*/
+    console.log(form.username.value);/*можно так написать быстрее так как у нас в теге form находится input с id=username, так же допустим можно изменить id на name=username, будет работать так же*/
 });
