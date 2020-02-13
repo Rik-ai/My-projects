@@ -1,38 +1,30 @@
-const form = document.querySelector('.signup-form');
-const feedback = document.querySelector('.feedback');
-const usernamePattern = /^[a-z A-Z]{6,12}$/;
+//Filter Method - обрабатывыет массив и проверяет каждый элемент в нутри функции обратного вызова. Таким образом, эта функция обратного вызова запускается для каждого элемента в массиве, что-то вроде проверки.И если эта проверка пройдет, то она будет держать элемент внутри массива, если он не пройдет, тогда он отфильтрует и удалит его из массива.
 
-form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    //validetion
-
-    const username = form.username.value;
+const scores = [10, 30, 15, 25, 50, 40, 5];
 
 
-    if (usernamePattern.test(username)) {
-        //feedback good info
-        feedback.textContent = 'that username is valid!';
-    } else {
-        //feedback help info
-        feedback.textContent = 'username must contain letters only & be between 6 & 12 characters long';
-    }
-});
+// const filteredScores = scores.filter((score) => {
+//     return score > 20;
+// });
+
+// console.log(filteredScores);
 
 
+const users = [
+    { name: 'shaun', premium: true },
+    { name: 'yoshi', premium: false },
+    { name: 'mario', premium: false },
+    { name: 'chun-li', premium: true },
+];
 
+// const premiumUsers = users.filter((user) => {
+//     return user.premium;
+// });
 
+// console.log(premiumUsers);
 
-//live feedback
+//Упрощённый вариант записи
 
-form.username.addEventListener('keyup', e => {
-    // console.log(e.target.value, form.username.value);
-    if (usernamePattern.test(e.target.value)) {
-        form.username.setAttribute('class', 'success');
-    } else {
-        form.username.setAttribute('class', 'error');
-    }
-});
+const premiumUsers = users.filter(user => user.premium);
 
-
-
+console.log(premiumUsers);
