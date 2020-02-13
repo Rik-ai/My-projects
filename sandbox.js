@@ -1,30 +1,24 @@
-//Filter Method - обрабатывыет массив и проверяет каждый элемент в нутри функции обратного вызова. Таким образом, эта функция обратного вызова запускается для каждого элемента в массиве, что-то вроде проверки.И если эта проверка пройдет, то она будет держать элемент внутри массива, если он не пройдет, тогда он отфильтрует и удалит его из массива.
+//Map Method - создаёт новый обновлённый в соответствии с заданными условиями массив базирующийся на старом 
+const prices = [20, 10, 30, 25, 15, 40, 80, 5];
 
-const scores = [10, 30, 15, 25, 50, 40, 5];
-
-
-// const filteredScores = scores.filter((score) => {
-//     return score > 20;
-// });
-
-// console.log(filteredScores);
+// const salePrices = prices.map(price => price / 2);
+// console.log(salePrices);
 
 
-const users = [
-    { name: 'shaun', premium: true },
-    { name: 'yoshi', premium: false },
-    { name: 'mario', premium: false },
-    { name: 'chun-li', premium: true },
+const products = [
+    { name: 'gold star', price: 20 },
+    { name: 'mushrooms', price: 40 },
+    { name: 'green shells', price: 30 },
+    { name: 'banana skin', price: 10 },
+    { name: 'red shells', price: 50 },
 ];
 
-// const premiumUsers = users.filter((user) => {
-//     return user.premium;
-// });
 
-// console.log(premiumUsers);
-
-//Упрощённый вариант записи
-
-const premiumUsers = users.filter(user => user.premium);
-
-console.log(premiumUsers);
+const saleProducts = products.map(product => {
+    if (product.price > 30) {
+        return { name: product.name, price: product.price / 2 };
+    } else {
+        return product;
+    }
+});
+console.log(saleProducts);
