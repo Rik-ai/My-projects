@@ -1,20 +1,26 @@
-//Chaining Array Methods
+//dates & times
+const now = new Date();
 
-const products = [
-    { name: 'gold star', price: 30 },
-    { name: 'green shell', price: 10 },
-    { name: 'red shell', price: 40 },
-    { name: 'banana', price: 5 },
-    { name: 'mushrooms', price: 50 }
-];
 
-// const filtered = products.filter(product => product.price > 20);
+console.log(now);
+console.log(typeof now);
 
-// const promos = filtered.map(product => {
-//     return `the${product.name} is ${product.price / 2} pounds`;
-// });
+//years, months, days,times
 
-const promos = products
-    .filter(product => product.price > 20)
-    .map(product => `the${product.name} is ${product.price / 2} pounds`);
-console.log(promos);
+console.log('getFullYear:', now.getFullYear());
+console.log('getMonth:', now.getMonth());
+console.log('getDate:', now.getDate());
+console.log('getDay:', now.getDay());
+console.log('getHours:', now.getHours());
+console.log('getMinutes:', now.getMinutes());
+console.log('getSeconds:', now.getSeconds());
+
+//timestamps
+
+console.log('timestamp:', now.getTime());
+
+//date strings
+
+console.log(now.toDateString()); //короткая запись даты
+console.log(now.toTimeString()); //короткая запись времени
+console.log(now.toLocaleString());
