@@ -1,26 +1,25 @@
-//dates & times
+// timestamps
+
+const before = new Date('February 1 2020 7:30:25'); //дата создания чего-либо
 const now = new Date();
 
+console.log(now.getTime(), before.getTime());
 
-console.log(now);
-console.log(typeof now);
 
-//years, months, days,times
+const diff = now.getTime() - before.getTime(); //сколько времени прошло с момента создания
+console.log(diff);
 
-console.log('getFullYear:', now.getFullYear());
-console.log('getMonth:', now.getMonth());
-console.log('getDate:', now.getDate());
-console.log('getDay:', now.getDay());
-console.log('getHours:', now.getHours());
-console.log('getMinutes:', now.getMinutes());
-console.log('getSeconds:', now.getSeconds());
+const mins = Math.round(diff / 1000 / 60); //перевод милисекунд в минуты
+const hours = Math.round(mins / 60);
+const days = Math.round(hours / 24);
 
-//timestamps
 
-console.log('timestamp:', now.getTime());
+console.log(mins, hours, days);
 
-//date strings
+console.log(`the что-то was created ${days} ago`);
 
-console.log(now.toDateString()); //короткая запись даты
-console.log(now.toTimeString()); //короткая запись времени
-console.log(now.toLocaleString());
+
+//converting timestamps into date objects
+
+const timestamp = 1675938474990;
+console.log(new Date(timestamp));
