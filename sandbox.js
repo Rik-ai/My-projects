@@ -1,38 +1,54 @@
-const getTodos = (resource, callback) => {
+const getTodos = (resource) => {
 
-    const request = new XMLHttpRequest(); //запрос с сервера
+    return new Promise((resolve, reject) => {
+        const request = new XMLHttpRequest();
 
-    request.addEventListener('readystatechange', () => {
-        //console.log(request, request.readyState);
-        if (request.readyState === 4 && request.status === 200) {
-            const data = JSON.parse(request.responseText);
-            /*JavaScript Object Notation превращяет JS обьекты в JSON строки*/
-            callback(undefined, data);
-        } else if (request.readyState === 4) {
-            callback('coud not fetch data', undefined);
-        }
+        request.addEventListener('readystatechange', () => {
+            if (request.readyState === 4 && request.status === 200) {
+                const data = JSON.parse(request.responseText);
+                resolve(data);
+            } else if (request.readyState === 4) {
+                reject('error getting resource');
+            }
+        });
+
+        request.open('GET', resource);
+        request.send();
     });
 
-    request.open('GET', resource); //первый аргумен это тип запроса, второй аргумент это откуда мы хотим получить запрос, конечная точка откуда хотим получить данные
-    request.send();
+
 
 };
 
-console.log(1);
-console.log(2);
-// Называется Callback Hell
-getTodos('luigi.json', (err, data) => {
-    console.log(data);
-    getTodos('mario.json', (err, data) => {
-        console.log(data);
-        getTodos('shaun.json', (err, data) => {
-            console.log(data);
-        });
-    });
+getTodos('luigi.json').then(data => {
+    console.log('promise resolved:', data)
+}).catch(err => {
+    console.log('promise rejected:', err)
 });
 
-console.log(3);
-console.log(4);
+//promise example
 
+// const getSomething = () => {
 
-/*Jason выглядит как массив объектов нам не нужно помещать его в строковый синтаксис, Теперь разница между тем, когда мы пишем объекты Jason и обычные объекты JavaScript, состоит в том, что все наши ключи должны идти в двойных кавычках, а когда мы используем строку в качестве значения, они также должны идти в двойных кавычках.*/
+//     return new Promise((resolve, reject) => { //В Promise мы делаем одну из двух вещей, мы либо разрешаем, когда получаем данные в случае успеха, либо отклоняем их, когда получаем какую-то ошибку. Таким образом, в обещании мы автоматически получаем доступ к двум параметрам внутри этой функции, которые являются параметром разрешения и параметром отклонения.
+//         //fetch something
+
+//         //resolve('some data');
+//         reject('some error');
+
+//     });
+
+// };
+
+// getSomething().then((data) => {
+//     console.log(data);
+// }, (err) => {
+//     console.log(err);
+// });
+
+// getSomething().then(data => {
+//     console.log(data);
+// }).catch(err => {
+//     console.log(err);
+// });
+
