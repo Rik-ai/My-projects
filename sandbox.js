@@ -21,34 +21,14 @@ const getTodos = (resource) => {
 };
 
 getTodos('luigi.json').then(data => {
-    console.log('promise resolved:', data)
+    console.log('promise 1 resolved:', data);
+    return getTodos('mario.json');
+}).then(data => {
+    console.log('promise 2 resolved:', data);
+    return getTodos('shaun.json');
+}).then(data => {
+    console.log('promise 3 resolved:', data);
 }).catch(err => {
     console.log('promise rejected:', err)
 });
-
-//promise example
-
-// const getSomething = () => {
-
-//     return new Promise((resolve, reject) => { //В Promise мы делаем одну из двух вещей, мы либо разрешаем, когда получаем данные в случае успеха, либо отклоняем их, когда получаем какую-то ошибку. Таким образом, в обещании мы автоматически получаем доступ к двум параметрам внутри этой функции, которые являются параметром разрешения и параметром отклонения.
-//         //fetch something
-
-//         //resolve('some data');
-//         reject('some error');
-
-//     });
-
-// };
-
-// getSomething().then((data) => {
-//     console.log(data);
-// }, (err) => {
-//     console.log(err);
-// });
-
-// getSomething().then(data => {
-//     console.log(data);
-// }).catch(err => {
-//     console.log(err);
-// });
 
