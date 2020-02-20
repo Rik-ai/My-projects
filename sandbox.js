@@ -1,4 +1,4 @@
-const getTodos = (callback) => {
+const getTodos = (resource, callback) => {
 
     const request = new XMLHttpRequest(); //запрос с сервера
 
@@ -13,21 +13,22 @@ const getTodos = (callback) => {
         }
     });
 
-    request.open('GET', 'todos.json'); //первый аргумен это тип запроса, второй аргумент это откуда мы хотим получить запрос, конечная точка откуда хотим получить данные
+    request.open('GET', resource); //первый аргумен это тип запроса, второй аргумент это откуда мы хотим получить запрос, конечная точка откуда хотим получить данные
     request.send();
 
 };
 
 console.log(1);
 console.log(2);
-
-getTodos((err, data) => {
-    console.log('callback fired');
-    if (err) {
-        console.log(err);
-    } else {
+// Называется Callback Hell
+getTodos('luigi.json', (err, data) => {
+    console.log(data);
+    getTodos('mario.json', (err, data) => {
         console.log(data);
-    }
+        getTodos('shaun.json', (err, data) => {
+            console.log(data);
+        });
+    });
 });
 
 console.log(3);
