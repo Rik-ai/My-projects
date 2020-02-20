@@ -1,34 +1,16 @@
-const getTodos = (resource) => {
+// fetch api
 
-    return new Promise((resolve, reject) => {
-        const request = new XMLHttpRequest();
-
-        request.addEventListener('readystatechange', () => {
-            if (request.readyState === 4 && request.status === 200) {
-                const data = JSON.parse(request.responseText);
-                resolve(data);
-            } else if (request.readyState === 4) {
-                reject('error getting resource');
-            }
-        });
-
-        request.open('GET', resource);
-        request.send();
-    });
-
-
-
-};
-
-getTodos('luigi.json').then(data => {
-    console.log('promise 1 resolved:', data);
-    return getTodos('mario.json');
-}).then(data => {
-    console.log('promise 2 resolved:', data);
-    return getTodos('shaun.json');
-}).then(data => {
-    console.log('promise 3 resolved:', data);
-}).catch(err => {
-    console.log('promise rejected:', err)
+fetch('luigi.json').then((response) => {//получаем данные
+    console.log('resolved', response);//берем ответ
+    return response.json();// и возвращаем ответ
+}).then(data => {//затем сюда и внутри мы запускаем функцию
+    console.log(data);
+}).catch((err) => {
+    console.log('rejected', err);
 });
 
+/*Bсе, что вам нужно запомнить, это три шага.
+Прежде всего, мы получаем данные.
+Затем мы берем ответ и возвращаем ответ в Точка Джейсон.
+Которая возвращает обещание, чтобы мы могли создать точку, затем сюда и внутри мы запускаем функцию, где у нас фактически есть доступ к этим данным.
+Мы также можем поймать любую ошибку в конце.*/
