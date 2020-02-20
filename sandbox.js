@@ -1,16 +1,11 @@
-const now = new Date();
+console.log(1);
+console.log(2);
 
-//console.log(dateFns.isToday(now));
+setTimeout(() => {
+    console.log('calback function fired') //задержка кода для наглядной демонстрации асинхронного кода
+}, 2000);
 
 
-//formatting options
-console.log(dateFns.format(now, 'YYYY'));
-console.log(dateFns.format(now, 'MMMM'));
-console.log(dateFns.format(now, 'dddd'));
-console.log(dateFns.format(now, 'Do'));
-console.log(dateFns.format(now, 'dddd Do MMMM YYYY'));
-
-//comparing dates
-const before = new Date('February 1 2020 12:00:00');
-
-console.log(dateFns.distanceInWords(now, before, { addSuffix: true }));
+console.log(3);
+console.log(4);
+//главный принцып асинхронного кода в том, что бы выполнять код на который нужно много времени позже после выполнения другого кода
