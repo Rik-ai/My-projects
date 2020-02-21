@@ -17,3 +17,11 @@ localStorage.age = '40';
 name = localStorage.getItem('name');
 age = localStorage.getItem('age');
 console.log(name, age);
+
+//deleting data from local storage
+localStorage.removeItem('name');//удаляет что-то конкретное из localStorage
+localStorage.clear(); //удаляет всё из localStorage
+
+name = localStorage.getItem('name');
+age = localStorage.getItem('age');
+console.log(name, age);
