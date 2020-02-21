@@ -1,27 +1,14 @@
-//store data in local storage
-//что бы посмотреть локальное хранилище в консоли браузера прописываем localStorage
-localStorage.setItem('name', 'mario'); //1й аргумент - имя ключа 2й аргумент - значение
-localStorage.setItem('age', 50);
+//у нас есть массив объектов javascript, и мы хотим превратить его в строку json. В объекте json есть метод с именем stringify.
 
-//get data from local storage
-let name = localStorage.getItem('name');
-let age = localStorage.getItem('age');
+const todos = [
+    { text: 'play mariokart', author: 'shaun' },
+    { text: 'buy some milk', author: 'mario' },
+    { text: 'kill some people', author: 'luigi' }
+];
 
-console.log(name, age);
 
-//updating data
+//console.log(JSON.stringify(todos)); И теперь мы можем видеть, что это одна гигантская строка, которая выглядит как массив объектов.
 
-localStorage.setItem('name', 'luigi');
-localStorage.age = '40';
-
-name = localStorage.getItem('name');
-age = localStorage.getItem('age');
-console.log(name, age);
-
-//deleting data from local storage
-localStorage.removeItem('name');//удаляет что-то конкретное из localStorage
-localStorage.clear(); //удаляет всё из localStorage
-
-name = localStorage.getItem('name');
-age = localStorage.getItem('age');
-console.log(name, age);
+localStorage.setItem('todos', JSON.stringify(todos)); //теперь смотрим в Application
+const stored = localStorage.getItem('todos');
+console.log(JSON.parse(stored));//JSON.parse превратит JSON масив в обычный масив
