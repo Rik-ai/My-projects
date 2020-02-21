@@ -1,18 +1,19 @@
-// async & await
+//store data in local storage
+//что бы посмотреть локальное хранилище в консоли браузера прописываем localStorage
+localStorage.setItem('name', 'mario'); //1й аргумент - имя ключа 2й аргумент - значение
+localStorage.setItem('age', 50);
 
-const getTodos = async () => {
+//get data from local storage
+let name = localStorage.getItem('name');
+let age = localStorage.getItem('age');
 
-    const response = await fetch('luigis.json')
+console.log(name, age);
 
-    if (response.status !== 200) {
-        throw new Error('cannot fetch the data');
-    }
-    const data = await response.json();
+//updating data
 
-    return data;
+localStorage.setItem('name', 'luigi');
+localStorage.age = '40';
 
-};
-
-getTodos()
-    .then(data => console.log('resolved:', data))
-    .catch(err => console.log('rejected:', err.message));
+name = localStorage.getItem('name');
+age = localStorage.getItem('age');
+console.log(name, age);
