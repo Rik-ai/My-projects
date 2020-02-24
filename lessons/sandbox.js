@@ -1,14 +1,55 @@
-//у нас есть массив объектов javascript, и мы хотим превратить его в строку json. В объекте json есть метод с именем stringify.
+const userOne = {
+    username: 'ryu',
+    email: 'ryu@gmai.com',
+    login() {
+        console.log('the user logged in');
+    },
+    logout() {
+        console.log('the user logged out');
+    }
+};
 
-const todos = [
-    { text: 'play mariokart', author: 'shaun' },
-    { text: 'buy some milk', author: 'mario' },
-    { text: 'kill some people', author: 'luigi' }
-];
+console.log(userOne.email, userOne.username);
+userOne.login();
 
 
-//console.log(JSON.stringify(todos)); И теперь мы можем видеть, что это одна гигантская строка, которая выглядит как массив объектов.
+const userTwo = {
+    username: 'chun-li',
+    email: 'chun-li@gmai.com',
+    login() {
+        console.log('the user logged in');
+    },
+    logout() {
+        console.log('the user logged out');
+    }
+};
 
-localStorage.setItem('todos', JSON.stringify(todos)); //теперь смотрим в Application
-const stored = localStorage.getItem('todos');
-console.log(JSON.parse(stored));//JSON.parse превратит JSON масив в обычный масив
+console.log(userTwo.email, userTwo.username);
+userTwo.login();
+
+
+
+const userThree = {
+    username: 'luigi',
+    email: 'luigi@gmai.com',
+    login() {
+        console.log('the user logged in');
+    },
+    logout() {
+        console.log('the user logged out');
+    }
+};
+
+console.log(userThree.email, userThree.username);
+userThree.login();
+
+//Так что такой подход использования объектной литеральной нотации для создания новых применений снова и снова не самый эффективный способ. Да, это хорошо для создания нужных объектов, но если вы создаете много объектов одного типа, и вы быстро хотите иметь возможность генерировать эти объекты, возможно, это не лучший способ
+
+
+const userFour = new User('shaun@gmail.com', 'shaun');
+
+/*И именно здесь объектно-ориентированное программирование поможет нам. Это поможет нам легко создавать объекты для разных типов данных. Итак, мы знаем, что когда мы хотим создать несколько объектов одного и того же вида, например пользователей, в этом случае, буквенная нотация объекта не всегда является лучшим способом сделать это, копируя и вставляя эти объекты снова и снова и снова.
+Теперь было бы неплохо, если бы мы могли сделать что-то подобное.
+Всякий раз, когда мы хотим новый объект, просто говорим «новый пользователь» и передавая значения для различных свойств, и мы можем сделать это в javascript, и мы можем сделать это несколькими различными способами.
+Теперь один из способов - использовать модель-прототип напрямую, что является оригинальным способом, которым мы сделали это в javascript, но с выпуском ASX, который является более новой спецификацией javascript, мы можем теперь сделать это, используя ключевое слово class.
+Теперь классы - это всего лишь синтаксический сахар, означающий, что под капотом он все еще использует ту же оригинальную модель прототипа, которую мы использовали до того, как классы сделали это, но классы стремятся сделать наш код немного чище и легче для понимания.*/
