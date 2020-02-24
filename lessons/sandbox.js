@@ -23,6 +23,12 @@ class User {
 }
 //extend говорит, что хорошо, мы найдем класс User и автоматически унаследуем все методы и свойства от класса User
 class Admin extends User {
+    constructor(username, email, title) {
+        //когда используем super в нутри конструктора он ищет родительский класс (User) и смотрит в нутрь этого конструктора для использования свойств этого конструктора
+        super(username, email);
+        this.title = title;
+
+    }
     deleteUser(user) {
         users = users.filter(u => u.username !== user.username);
     }
@@ -31,7 +37,7 @@ class Admin extends User {
 //сами обьекты но с разными свойствами
 const userOne = new User('mario', 'mario@gmail.com');
 const userTwo = new User('luigi', 'luigi@gmail.com');
-const userThree = new Admin('shaun', 'shaun@gmail.com');
+const userThree = new Admin('shaun', 'shaun@gmail.com', 'matherFucker');
 
 console.log(userOne, userTwo, userThree);
 
@@ -47,3 +53,5 @@ console.log(users);
 
 userThree.deleteUser(userTwo);
 console.log(users);
+
+console.log(userThree);
