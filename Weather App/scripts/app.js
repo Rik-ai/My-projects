@@ -3,6 +3,8 @@ const card = document.querySelector('.card');
 const details = document.querySelector('.details');
 const time = document.querySelector('img.time');
 const icon = document.querySelector('.icon img');
+const forecast = new Forecast();
+
 
 const updateUI = (data) => {
 
@@ -37,7 +39,7 @@ const updateUI = (data) => {
     // //Ternary Operator
     // const result = false ? 'value 1' : 'value 2';
     // console.log(result);
-    let timeSrc = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg'; //короткая форма записи кода ниже
+    const timeSrc = weather.IsDayTime ? 'img/day.svg' : 'img/night.svg'; //короткая форма записи кода ниже
 
     // let timeSrc = null;
     // if (weather.IsDayTime) {
@@ -77,7 +79,7 @@ cityForm.addEventListener('submit', e => {
     cityForm.reset();
 
     //update the ui with new city
-    updateCity(city)
+    forecast.updateCity(city)
         .then(data => updateUI(data))
         .catch(err => console.log(err));
 
@@ -86,7 +88,7 @@ cityForm.addEventListener('submit', e => {
 });
 //теперь будет запоминать последний выбранный город и при обновлении выдавать его вместо пустого окна
 if (localStorage.getItem('city')) {
-    updateCity(localStorage.getItem('city'))
+    forecast.updateCity(localStorage.getItem('city'))
         .then(data => updateUI(data))
         .catch(err => console.log(err));
 };
