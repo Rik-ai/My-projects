@@ -1,36 +1,75 @@
-//Prototype Model
+//Getting Collections
+const list = document.querySelector('ul');
+const form = document.querySelector('form');
 
-function User(username, email) {
-    this.username = username;
-    this.email = email;
+const addRecipe = (recipe, id) => {
+    let time = recipe.created_at.toDate();
 
+    /*data-id="${id}" с помощью этой строки видно в консоли id каждого li тега*/
+    let html = `
+    <li data-id="${id}"> 
+    <div>${recipe.title}</div>
+    <div>${time}</div>
+    <button class="btn btn-danger btn-sm my-2">delete</button>
+    </li>
+    `;
+
+    list.innerHTML += html;
 }
 
-User.prototype.login = function () {
-    console.log(`${this.username} has logged in`)
-};
+//get documenta
+db.collection('recipes').get().then(snapshot => {
+    //when we have the data
+    //console.log(snapshot.docs[0].data());
+    snapshot.docs.forEach(doc => {
+        console.log(doc.id); //показывает id (который в датабазе) кажого рецепта 
+        addRecipe(doc.data(), doc.id);
+    });
+}).catch(err => {
+    console.log(err);
+});
 
-User.prototype.logout = function () {
-    console.log(`${this.username} has logged out`)
-};
-//Prototypal Inheritance
-function Admin(username, email, title) {
-    User.call(this, username, email)/*Первый аргумент будет контекстом того, чему будет соответствовать ключевое слово this внутри функции конструктора пользователя.
-    Теперь мы хотим, чтобы ключевое слово this внутри, когда мы вызывали его от администратора, было новым объектом, который мы только что создали, когда говорим new admin.
-    Теперь внутри функции администратора, которая является именно этим, мы можем передать это в качестве первого аргумента для ссылки на объект, который мы только что создали, затем, когда мы вызываем user, this внутри конструктора пользователя будет равен тому, что мы передаем, в котором есть новый объект, который мы создали, когда мы сказали новый администратор. Cледующие аргументы - это фактические параметры, которые мы должны принять(username, email) .*/
-    this.title = title;
-}
 
-Admin.prototype = Object.create(User.prototype); //копирует методы из Username
 
-Admin.prototype.deleteUser = function () {
-    //delete a user
-};
 
-const userOne = new User('mario', 'mario@gmail.com');
-const userTwo = new User('luigi', 'luigi@gmail.com');
-const userThree = new Admin('shaun', 'shaub@gmail.com', 'Superman');
 
-console.log(userOne, userTwo, userThree);
-userOne.login();
-userOne.logout();
+
+//Add & Saving Documents
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const now = new Date();
+    const recipe = {
+        title: form.recipe.value,
+        created_at: firebase.firestore.Timestamp.fromDate(now)
+    };
+
+    db.collection('recipes').add(recipe).then(() => {
+        console.log('recipe added');
+    }).catch(err => {
+        console.lor(err);
+    });
+
+});
+
+
+
+
+
+//Deleting Documents
+list.addEventListener('click', e => {
+    //console.log(e);
+    if (e.target.tagName === 'BUTTON') {
+        const id = e.target.parentElement.getAttribute('data-id'); //теперь при нажатии кнопки удалить, в консоли видно id удаляемого елемента
+        console.log(id)
+        //будет удалятся рецепт
+        db.collection('recipes').doc(id).delete().then(() =>
+            console.log('recipe deleted'));
+    }
+});
+
+
+
+
+
+//Real-time Listeners
