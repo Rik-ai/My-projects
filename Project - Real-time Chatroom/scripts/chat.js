@@ -27,6 +27,8 @@ class Chatroom {
     }
     getChats(callback) {
         this.chats
+            .where('room', '==', this.room)//этот метод в основном позволит нам получить документы из определенной коллекции, где выполняется определенное условие.
+            .orderBy('created_at')
             .onSnapshot(snapshot => {
                 snapshot.docChanges().forEach(change => {
                     if (change.type === 'added') {
@@ -38,7 +40,7 @@ class Chatroom {
     }
 }
 
-const chatroom = new Chatroom('gaming', 'shaun');
+const chatroom = new Chatroom('general', 'shaun');
 
 
 chatroom.getChats((data) => {
