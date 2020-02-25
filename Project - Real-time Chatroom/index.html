@@ -59,6 +59,31 @@
 
     </div>
 
+
+
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
+    <script>
+
+        var firebaseConfig = {
+            apiKey: "AIzaSyBeYRjHO4ABLjtU2UZnz5tRJTZ1_8uMsq0",
+            authDomain: "js-courses-95c12.firebaseapp.com",
+            databaseURL: "https://js-courses-95c12.firebaseio.com",
+            projectId: "js-courses-95c12",
+            storageBucket: "js-courses-95c12.appspot.com",
+            messagingSenderId: "322205193744",
+            appId: "1:322205193744:web:fb55bff817220625491c95",
+            measurementId: "G-G7T0J69SQ8"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        firebase.analytics();
+    </script>
+
+
+
     <script src="scripts/app.js"></script>
     <script src="scripts/ui.js"></script>
     <script src="scripts/chat.js"></script>
