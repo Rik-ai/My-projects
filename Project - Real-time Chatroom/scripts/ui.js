@@ -5,6 +5,9 @@ class ChatUI {
     constructor(list) {
         this.list = list;
     }
+    clear() {
+        this.list.innerHTML = '';
+    }
     render(data) {//тот метод рендеринга будет отвечать за создание html фрагмент или шаблоны для каждого документа, который мы возвращаем, и отрисовываем его DOM
         const when = dateFns.distanceInWordsToNow(
             data.created_at.toDate(),
