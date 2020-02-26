@@ -1,88 +1,23 @@
-//Getting Collections
-const list = document.querySelector('ul');
-const form = document.querySelector('form');
-const button = document.querySelector('button');
-
-const addRecipe = (recipe, id) => {
-    let time = recipe.created_at.toDate();
-
-    /*data-id="${id}" с помощью этой строки видно в консоли id каждого li тега*/
-    let html = `
-    <li data-id="${id}"> 
-    <div>${recipe.title}</div>
-    <div>${time}</div>
-    <button class="btn btn-danger btn-sm my-2">delete</button>
-    </li>
-    `;
-
-    list.innerHTML += html;
+//rest parameter
+const double = (...nums) => { //не нужно вводить все аргументы
+    //do something
+    return nums.map(num => num * 2);
+    console.log(nums);
 }
 
-const deleteRecipe = (id) => {
-    const recipes = document.querySelectorAll('li');
-    recipes.forEach(recipe => {
-        if (recipe.getAttribute('data-id') === id)
-            recipe.remove();
-    });
-}
+const result = double(1, 2, 3, 5, 6, 8, 9, 12, 45, 76, 324, 76, 34, 76);
+console.log(result);
 
-//get documenta
-const unsub = db.collection('recipes').onSnapshot(snapshot => {
-    snapshot.docChanges().forEach(change => {
-        const doc = change.doc;
-        if (change.type === 'added') {
-            addRecipe(doc.data(), doc.id);
-        } else if (change.type === 'removed') {
-            deleteRecipe(doc.id);
-        }
-    })
-});
+//spread syntax (arrays)
 
+const people = ['shaun', 'ryu', 'cristal'];
+console.log(...people);
+const members = ['mario', 'chun-li', ...people];//можно обьединять массивы
+console.log(members)
 
+//spread syntax(objects)
 
-
-
-
-//Add & Saving Documents
-form.addEventListener('submit', e => {
-    e.preventDefault();
-
-    const now = new Date();
-    const recipe = {
-        title: form.recipe.value,
-        created_at: firebase.firestore.Timestamp.fromDate(now)
-    };
-
-    db.collection('recipes').add(recipe).then(() => {
-        console.log('recipe added');
-    }).catch(err => {
-        console.lor(err);
-    });
-
-});
-
-
-
-
-
-//Deleting Documents
-list.addEventListener('click', e => {
-    //console.log(e);
-    if (e.target.tagName === 'BUTTON') {
-        const id = e.target.parentElement.getAttribute('data-id'); //теперь при нажатии кнопки удалить, в консоли видно id удаляемого елемента
-        console.log(id)
-        //будет удалятся рецепт
-        db.collection('recipes').doc(id).delete().then(() =>
-            console.log('recipe deleted'));
-    }
-});
-
-
-//unsub from database changes
-
-button.addEventListener('click', () => {
-    unsub();
-    console.log('unsubscribed from collection changes')
-});
-
+const person = { name: 'shaun', age: 30, job: 'ripper' };
+const personClone = { ...person, location: 'kiev' };
+console.log(personClone)
 
