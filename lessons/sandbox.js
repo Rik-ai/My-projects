@@ -1,23 +1,35 @@
-//rest parameter
-const double = (...nums) => { //не нужно вводить все аргументы
-    //do something
-    return nums.map(num => num * 2);
-    console.log(nums);
-}
+//sets
+const namesArray = ['ryu', 'chun-li', 'ryu', 'shaun'];
+console.log(namesArray);
 
-const result = double(1, 2, 3, 5, 6, 8, 9, 12, 45, 76, 324, 76, 34, 76);
-console.log(result);
+//const namesSet = new Set(['ryu', 'chun-li', 'ryu', 'shaun']);
+// const namesSet = new Set(namesArray);
+// console.log(namesSet);
 
-//spread syntax (arrays)
 
-const people = ['shaun', 'ryu', 'cristal'];
-console.log(...people);
-const members = ['mario', 'chun-li', ...people];//можно обьединять массивы
-console.log(members)
+// const uniqueNames = [...namesSet];
+const uniqueNames = [...new Set(namesArray)]; 1
+console.log(uniqueNames);
 
-//spread syntax(objects)
+const ages = new Set();
+ages.add(20);
+ages.add(25).add(30);//В сете не может быть двух одинаковых элементов
+ages.add(25);
+ages.delete(25);
+console.log(ages, ages.size);
+console.log(ages.has(30), ages.has(25));
 
-const person = { name: 'shaun', age: 30, job: 'ripper' };
-const personClone = { ...person, location: 'kiev' };
-console.log(personClone)
+
+ages.clear();
+console.log(ages);
+
+const ninjas = new Set([
+    { name: 'shaun', age: 30 },
+    { name: 'crystal', age: 25 },
+    { name: 'chun-li', age: 32 }
+]);
+ninjas.forEach(ninja => {
+    console.log(ninja.name, ninja.age);
+});
+
 
