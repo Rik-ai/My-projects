@@ -14,20 +14,11 @@ class App extends Component {
     pageTitle: 'React components'
   }
 
-  changeTitleHandler = () => {
-
-    const oldTitle = this.state.pageTitle
-    const newTitle = oldTitle + ' (changed)'
-
+  changeTitleHandler = (newTitle) => {
     this.setState({
       pageTitle: newTitle
     })
   }
-
-
-
-
-
 
 
 
@@ -44,11 +35,25 @@ class App extends Component {
       <div style={divStyle}>
         <h1>{this.state.pageTitle}</h1>
 
-        <button onClick={this.changeTitleHandler}>Change Title</button>
+        <button onClick={this.changeTitleHandler.bind(this, 'Changed!')}>Change Title</button>
 
-        <Car name={cars[0].name} year={cars[0].year} />
-        <Car name={cars[1].name} year={cars[1].year} />
-        <Car name={cars[2].name} year={cars[2].year} />
+        <Car
+          name={cars[0].name}
+          year={cars[0].year}
+          // 1й метод передачи параметров через bind более правильный так как жрёт меньше ресурсов
+          onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)}
+        />
+        <Car
+          name={cars[1].name}
+          year={cars[1].year}
+          //2й метод передачи параметров через стрелочную функцию
+          onChangeTitle={() => this.changeTitleHandler(cars[1].name)}
+        />
+        <Car
+          name={cars[2].name}
+          year={cars[2].year}
+          onChangeTitle={() => this.changeTitleHandler(cars[2].name)}
+        />
       </div>
     );
   }
