@@ -4,22 +4,32 @@ import './App.css';
 import Car from './Car/Car'
 
 class App extends Component {
+
+  state = { //компонент который описывает состояние в котором находится данный обьект
+    cars: [
+      { name: 'Ford', year: '2018' },
+      { name: 'Ferrary', year: '2016' },
+      { name: 'Porshe', year: '2010' }
+    ],
+    pageTitle: 'React components'
+  }
+
+
   render() {
     const divStyle = {
       'textAlign': 'center'
     }
+
+    const cars = this.state.cars
+
+
     return (
       <div style={divStyle}>
-        <h1>Hello world !</h1>
+        <h1>{this.state.pageTitle}</h1>
 
-        {/* если передаём обьект необходимо использовать {}, если передаём обычную строку то {} можно не использовать */}
-        <Car name={'Ford'} year={2018}>
-          <p style={{ color: 'green' }}>color</p>
-        </Car>
-        <Car name='Ferrary' year={2016}>
-          <p style={{ color: 'red' }}>color</p>
-        </Car>
-        <Car name='Porshe' year={2010} />
+        <Car name={cars[0].name} year={cars[0].year} />
+        <Car name={cars[1].name} year={cars[1].year} />
+        <Car name={cars[2].name} year={cars[2].year} />
       </div>
     );
   }
