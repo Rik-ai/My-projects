@@ -8,21 +8,8 @@ class App extends Component {
       <div className="App">
         <h1>Hello world !</h1>
       </div>
+      <p>Hello</p> //вывести параграф не получится так как должен быть корневой элемент типа <div></div>
     );
-
-
-    //Конструкция Реакта, как видит интерпритатор
-    // return React.createElement(
-    //   'div',
-    //   {
-    //     className: 'App' //опции div,
-    //   },
-    //   React.createElement(
-    //     'h1',  //опции h1
-    //     null,
-    //     'Hello world !'
-    //   )
-    //);
   }
 }
 
