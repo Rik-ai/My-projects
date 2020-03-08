@@ -13,11 +13,13 @@ class App extends Component {
         <h1>Hello world !</h1>
 
         {/* если передаём обьект необходимо использовать {}, если передаём обычную строку то {} можно не использовать */}
-        <Car name={'Ford'} year={2018} />
-        <Car name='Ferrary' year={2016} />
+        <Car name={'Ford'} year={2018}>
+          <p style={{ color: 'green' }}>color</p>
+        </Car>
+        <Car name='Ferrary' year={2016}>
+          <p style={{ color: 'red' }}>color</p>
+        </Car>
         <Car name='Porshe' year={2010} />
-
-
       </div>
     );
   }
