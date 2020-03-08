@@ -12,8 +12,11 @@ class App extends Component {
       <div style={divStyle}>
         <h1>Hello world !</h1>
 
-        <Car />
-        <Car />
+        {/* если передаём обьект необходимо использовать {}, если передаём обычную строку то {} можно не использовать */}
+        <Car name={'Ford'} year={2018} />
+        <Car name='Ferrary' year={2016} />
+        <Car name='Porshe' year={2010} />
+
 
       </div>
     );
