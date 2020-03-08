@@ -21,9 +21,25 @@ class App extends Component {
     })
   }
 
-  changeTitleHandler = pageTitle => {
-    this.setState({ pageTitle })
+  onChangeName(name, index) {
+    const car = this.state.cars[index]
+    car.name = name
+    const cars = [...this.state.cars] //получим новый склонированный массив т.к. когда мы меняем какое-то состояние мы должны создавать клоны
+    cars[index] = car
+    this.setState({ cars })
   }
+
+  deleteHandler(index) {
+    const cars = this.state.cars.concat() //получим новый склонированный массив т.к. когда мы меняем какое-то состояние мы должны создавать клоны
+    cars.splice(index, 1) //splice метод для удаления элемента, 1 значение индех элемента 2е значение количество удаляемых элементов
+
+
+    this.setState({ cars })
+  }
+
+
+
+
 
   render() {
     const divStyle = {
@@ -39,7 +55,8 @@ class App extends Component {
             key={index}
             name={car.name}
             year={car.year}
-            onChangeTitle={() => this.changeTitleHandler(car.name)}
+            onDelete={this.deleteHandler.bind(this, index)}
+            onChangeName={e => this.onChangeName(e.target.value, index)}
           />
         )
       })
