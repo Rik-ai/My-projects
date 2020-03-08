@@ -34,7 +34,6 @@ class App extends Component {
       'textAlign': 'center'
     }
 
-    const cars = this.state.cars
 
 
     return (
@@ -45,23 +44,18 @@ class App extends Component {
 
         <button onClick={this.changeTitleHandler.bind(this, 'Changed!')}>Change Title</button>
 
-        <Car
-          name={cars[0].name}
-          year={cars[0].year}
-          // 1й метод передачи параметров через bind более правильный так как жрёт меньше ресурсов
-          onChangeTitle={this.changeTitleHandler.bind(this, cars[0].name)}
-        />
-        <Car
-          name={cars[1].name}
-          year={cars[1].year}
-          //2й метод передачи параметров через стрелочную функцию
-          onChangeTitle={() => this.changeTitleHandler(cars[1].name)}
-        />
-        <Car
-          name={cars[2].name}
-          year={cars[2].year}
-          onChangeTitle={() => this.changeTitleHandler(cars[2].name)}
-        />
+        {this.state.cars.map((car, index) => {
+          return (
+            <Car
+              key={index}
+              name={car.name}
+              year={car.year}
+              onChangeTitle={() => {
+                this.changeTitleHandler(car.name)
+              }}
+            />
+          )
+        })}
       </div>
     );
   }
