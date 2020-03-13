@@ -6,6 +6,7 @@ import Car from './Car/Car'
 class App extends Component {
 
   constructor(props) {
+    console.log('App constructor')
     // так как наследуемся от базового класса реакт компонента то необходимо вызвать метод супер, что бы конструктор отработал правильно
     super(props)
 
@@ -43,11 +44,18 @@ class App extends Component {
     this.setState({ cars })
   }
 
+  //1) вызывается тогда когда произошла инициализация реакт компонента, подготовлены все параметры и реакт компонент готов что бы его зарендерили (замаунтен)
+  componentWillMount() {
+    console.log('App componentWillMount')
+  }
+  //3) сообщает о том что HTML реакта готов и его можно преобразовывать
+  componentDidMount() {
+    console.log('App consoleDidMount')
+  }
 
-
-
-
+  //2) формирует конечный JSX который будет представлен в виде HTML
   render() {
+    console.log('App render')
     const divStyle = {
       textAlign: 'center'
     }
