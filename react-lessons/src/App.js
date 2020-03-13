@@ -5,15 +5,21 @@ import Car from './Car/Car'
 
 class App extends Component {
 
-  state = {
-    cars: [
-      { name: 'Ford', year: 2018 },
-      { name: 'Audi', year: 2016 },
-      { name: 'Mazda', year: 2010 }
-    ],
-    pageTitle: 'React components',
-    showCars: false
+  constructor(props) {
+    // так как наследуемся от базового класса реакт компонента то необходимо вызвать метод супер, что бы конструктор отработал правильно
+    super(props)
+
+    this.state = {
+      cars: [
+        { name: 'Ford', year: 2018 },
+        { name: 'Audi', year: 2016 },
+        { name: 'Mazda', year: 2010 }
+      ],
+      pageTitle: 'React components',
+      showCars: false
+    }
   }
+
 
   toggleCarsHandler = () => {
     this.setState({
@@ -65,7 +71,6 @@ class App extends Component {
     return (
       <div style={divStyle}>
         {/* <h1>{this.state.pageTitle}</h1> */}
-        {/* если мы передаём какие-то параметры  в компонент который определён через class то мы можем получить доступ к различным свойствам но мы должны с начала обращятся к полю rops через this */}
         <h1>{this.props.title}</h1>
 
         <button
