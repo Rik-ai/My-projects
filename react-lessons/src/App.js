@@ -6,15 +6,14 @@ import Car from './Car/Car'
 class App extends Component {
 
   constructor(props) {
-    console.log('App constructor')
     // так как наследуемся от базового класса реакт компонента то необходимо вызвать метод супер, что бы конструктор отработал правильно
     super(props)
 
     this.state = {
       cars: [
         { name: 'Ford', year: 2018 },
-        { name: 'Audi', year: 2016 },
-        { name: 'Mazda', year: 2010 }
+        // { name: 'Audi', year: 2016 },
+        // { name: 'Mazda', year: 2010 }
       ],
       pageTitle: 'React components',
       showCars: false
