@@ -25,6 +25,10 @@ class Car extends React.Component {
 
     }
 
+    componentWillUnmount() {
+        console.log('Car componentWillUnmount')
+    }
+
 
     render() {
         console.log('Car render')
