@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Car from './Car/Car'
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary'
@@ -95,6 +94,7 @@ class App extends Component {
           className={'AppButton'}
           onClick={this.toggleCarsHandler}
         >Toggle cars</button>
+
         <div style={{
           width: 400,
           margin: 'auto',
