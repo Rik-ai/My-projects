@@ -20,24 +20,20 @@ class Car extends React.Component {
 
     }
     //делает то же самое что и WillUpdate но запрещает работу с преобразованием стейта на прямую
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('Car getDerivedStateFromProps', nextProps, prevState)
+    // static getDerivedStateFromProps(nextProps, prevState) {
+    //     console.log('Car getDerivedStateFromProps', nextProps, prevState)
 
-        return {
-            prevState
-
-        }
-    }
-
+    //     returnprevState
+    // }
 
     componentDidUpdate() {
         console.log('Car componentDidUpdate')
 
     }
     //позволяет получить не изменённое дом дерево ещё до обновления
-    getSnapshotBeforeUpdate() {
-        console.log('Car getSnapshotBeforeUpdate')
-    }
+    // getSnapshotBeforeUpdate() {
+    //     console.log('Car getSnapshotBeforeUpdate')
+    // }
 
     componentWillUnmount() {
         console.log('Car componentWillUnmount')
@@ -46,6 +42,12 @@ class Car extends React.Component {
 
     render() {
         console.log('Car render')
+
+        if (Math.random() > 0.7) {
+            throw new Error('Car random failed')
+        }
+
+
         const inputClasses = ['input']
 
         if (this.props.name !== '') {
