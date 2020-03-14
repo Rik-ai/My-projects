@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import classes from './Car.css'
-import './Car.css'
+import PropTypes from 'prop-types'
 import withClass from '../hoc/withClass'
 
 // теперь компонент Car наследуется от реакт компонента, теперь доступен локальный стейт(хз что это) и разные жизненные циклы
@@ -36,6 +36,16 @@ class Car extends React.Component {
             </React.Fragment>
         )
     }
+}
+
+
+Car.propTypes = {
+    //названия полей которые мы ожидаем и функции
+    //такая валидация и проверка свойств возможна только НЕ в функциональных компонентах которы определены через ключевое слово Class и наследуются от реакт компонента
+    name: PropTypes.string.isRequired,
+    year: PropTypes.number,
+    onChangeName: PropTypes.func,
+    onDelete: PropTypes.func
 }
 
 
