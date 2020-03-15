@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 const withClass = (Component, className) => {
     return props => {
         return (
-            <section className={className}>
+            <section className="Car">
                 <Component {...props} />
             </section>
         )

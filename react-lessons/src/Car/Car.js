@@ -6,6 +6,20 @@ import withClass from '../hoc/withClass'
 // теперь компонент Car наследуется от реакт компонента, теперь доступен локальный стейт(хз что это) и разные жизненные циклы
 class Car extends React.Component {
 
+    //если создаём референцию в ручную то мы не используем колбэк функцию а просто передаём рееренцию на нужный элемент
+    constructor(props) {
+        super(props)
+
+        this.inputRef = React.createRef()
+    }
+
+
+    componentDidMount() {
+        if (this.props.index === 0) {
+            this.inputRef.current.focus()
+        }
+    }
+
 
     render() {
         console.log('Car render')
@@ -22,11 +36,15 @@ class Car extends React.Component {
             inputClasses.push('bold')
         }
 
+
+
         return (
             <React.Fragment>
                 <h3>Car name: {this.props.name}</h3>
                 <p>Year: <strong>{this.props.year}</strong></p>
                 <input
+                    //если создаём референцию в ручную то мы не используем колбэк функцию а просто передаём рееренцию на нужный элемент
+                    ref={this.inputRef}
                     type='text'
                     onChange={this.props.onChangeName}
                     value={this.props.name}
@@ -42,6 +60,7 @@ class Car extends React.Component {
 Car.propTypes = {
     //названия полей которые мы ожидаем и функции
     //такая валидация и проверка свойств возможна только НЕ в функциональных компонентах которы определены через ключевое слово Class и наследуются от реакт компонента
+    index: PropTypes.number,
     name: PropTypes.string.isRequired,
     year: PropTypes.number,
     onChangeName: PropTypes.func,
