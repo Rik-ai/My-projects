@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import Layout from './hoc/Layout/Layout'
+import Quiz from './Containers/Quiz/Quiz'
+
 
 
 class App extends Component {
   render() {
     return (
       <Layout>
+        <Quiz />
 
 
-
-        <div style={{ width: 400, border: '2px solid black', padding: '10px', margin: '5px' }}>
-          <h1>Layout works</h1>
-
-        </div>
       </Layout>
     )
 
