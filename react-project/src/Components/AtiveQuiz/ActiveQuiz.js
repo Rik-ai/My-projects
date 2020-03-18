@@ -8,11 +8,11 @@ const ActiveQuiz = props => {
         <div className={classes.ActiveQuiz}>
             <p className={classes.Question}>
                 <span>
-                    <strong>3.</strong>&nbsp; {/*&nbsp  добавляет символ пробела в js */}
+                    <strong>{props.answerNumber}.</strong>&nbsp; {/*&nbsp  добавляет символ пробела в js */}
                     {props.question}
                 </span>
 
-                <small>6 bp 666</small>
+                <small>{props.answerNumber} из {props.quizLength}</small>
             </p>
 
             <AnswersList
