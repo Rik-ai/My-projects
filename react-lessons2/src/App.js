@@ -16,7 +16,7 @@ class App extends Component {
               <a href="/">Home</a>
             </li>
             <li>
-              <a href="/about">About</a>
+              <a href="/cars">Cars</a>
             </li>
           </ul>
         </nav>
@@ -24,11 +24,11 @@ class App extends Component {
         <hr />
         {/*Path - путь на который должен откликатся данный роут */}
         {/* Exact - рендерит данный роут только если адресс полностью совпадает с тем что зареган в пути */}
-        <Route path='/' exact render={() => <h1>Home Page</h1>} />
+        <Route path="/" exact render={() => <h1>Home Page</h1>} />
+        <Route path="/about" component={About} />
+        <Route path="/cars" component={Cars} />
 
-        <About />
 
-        <Cars />
       </div>
     );
   }
