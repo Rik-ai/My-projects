@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './App.scss'
 //можем регать различные роуты внутри реакт прилажения
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { Route, NavLink, Switch, Redirect } from 'react-router-dom'
 import { BrowserRouter } from 'react-router-dom'
 import About from './About/About'
 import Cars from './Cars/Cars'
@@ -44,12 +44,17 @@ class App extends Component {
           <Switch>
             <Route path="/" exact render={() => <h1>Home Page</h1>} />
             <Route path="/about" component={About} />
-            <Route path="/cars/:name" component={CarDetail} /
-            ><Route path="/cars" component={Cars} />
+            <Route path="/cars/:name" component={CarDetail} />
+            <Route path="/cars" component={Cars} />
+            {/* В случае если нет совпадения роутов то делаем редирект на страницу / */}
+            <Redirect to={'/'} />
+            {/* Отрабатывает не существующий роут */}
+            {/* <Route render={() => <h1 style={{ color: 'red', textAlign: "center" }}>Error 404 Not Found</h1>} /> */}
+
 
           </Switch>
         </div>
-      </BrowserRouter>
+      </BrowserRouter >
     );
   }
 }
