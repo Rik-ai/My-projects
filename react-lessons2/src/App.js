@@ -14,13 +14,28 @@ class App extends Component {
           <nav className="nav">
             <ul>
               <li>
-                <NavLink to="/">Home</NavLink>
+                {/* по стандарту используется класс active, если хотим задать свой класс пишем activeClassName={' имя класса'} */}
+                <NavLink
+                  to="/"
+                  exact
+                  activeClassName={'wfm-active'}
+                >Home</NavLink>
               </li>
               <li>
-                <NavLink to="/about">About</NavLink>
+                {/* так же можем задавать стилистику прямо тут с помощью exact activeStyle={{}} */}
+                <NavLink to="/about" activeStyle={{
+                  color: 'blue'
+                }}>About</NavLink>
               </li>
               <li>
-                <NavLink to="/cars">Cars</NavLink>
+                {/* так же можно передовать путь не как строку, а как обьект */}
+                <NavLink to={{
+                  pathname: '/cars',
+                  // после ? идут какие-то параметры (в браузере отображаются в адресной строке)
+                  search: '?a=1&b=2',
+                  // hash - для того что бы скролить до определённого елемента (в браузере отображаются в адресной строке)
+                  hash: 'wfm-hach'
+                }}>Cars</NavLink>
               </li>
             </ul>
           </nav>
