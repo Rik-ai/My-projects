@@ -8,6 +8,10 @@ import Cars from './Cars/Cars'
 import CarDetail from './CarDetail/CarDetail'
 
 class App extends Component {
+
+  state = {
+    isLoggedIn: false
+  }
   render() {
     return (
       <BrowserRouter>
@@ -38,12 +42,21 @@ class App extends Component {
           </nav>
 
           <hr />
+          {/* Защита роута */}
+          <div style={{ textAlign: 'center' }}>
+            <h3>Is logged in {this.state.isLoggedIn ? 'true' : 'false'}</h3>
+            <button onClick={() => this.setState({ isLoggedIn: true })}>Login</button>
+          </div>
+
+          <hr />
           {/*Path - путь на который должен откликатся данный роут */}
           {/* Exact - рендерит данный роут только если адресс полностью совпадает с тем что зареган в пути */}
           {/* Switch - аналогия exact */}
           <Switch>
             <Route path="/" exact render={() => <h1>Home Page</h1>} />
-            <Route path="/about" component={About} />
+            {/* Защищаем About */}
+            {this.state.isLoggedIn ? <Route path="/about" component={About} /> : null}
+
             <Route path="/cars/:name" component={CarDetail} />
             <Route path="/cars" component={Cars} />
             {/* В случае если нет совпадения роутов то делаем редирект на страницу / */}
