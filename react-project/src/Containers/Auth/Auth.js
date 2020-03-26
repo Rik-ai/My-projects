@@ -18,7 +18,7 @@ export default class Auth extends Component {
         isFormVAlid: false,
         formControls: {
             email: {
-                valu: '',
+                value: '',
                 type: 'email',
                 label: 'Email',
                 errorMessage: 'Введи нормальный email ска',
@@ -30,7 +30,7 @@ export default class Auth extends Component {
                 }
             },
             password: {
-                valu: '',
+                value: '',
                 type: 'password',
                 label: 'Пароль',
                 errorMessage: 'Введи нормальный пароль ска',
