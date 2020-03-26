@@ -15,6 +15,7 @@ export default class Auth extends Component {
 
     // Валидация
     state = {
+        isFormVAlid: false,
         formControls: {
             email: {
                 valu: '',
@@ -89,8 +90,14 @@ export default class Auth extends Component {
 
         formControls[controlName] = control
 
+        let isFormVAlid = true
+
+        Object.keys(formControls).forEach(name => {
+            isFormVAlid = formControls[name].valid && isFormVAlid
+        })
+
         this.setState({
-            formControls
+            formControls, isFormVAlid
         })
     }
 
@@ -127,12 +134,15 @@ export default class Auth extends Component {
 
                             type='succes'
                             onClick={this.loginHandler}
+                            disabled={!this.state.isFormVAlid}
                         >
                             Войти
                         </Button>
                         <Button
                             type='primary'
                             onClick={this.registerHandler}
+                            disabled={!this.state.isFormVAlid}
+
                         >
                             Зарегистрироваться
                         </Button>
