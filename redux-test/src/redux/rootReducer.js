@@ -6,6 +6,6 @@ const initialState = {
 
 
 
-export default function rootReducer(state, action) {
+export default function rootReducer(state = initialState, action) {
     return state
 }
