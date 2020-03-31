@@ -41,7 +41,7 @@ const addCounter = {
     type: 'ADD'
 }
 
-store.dispatch(addCounter)
+store.dispatch(addCounter) //с помощью этой функции можно диспатчить новые экшены
 
 store.dispatch({ type: 'SUB' })
 
