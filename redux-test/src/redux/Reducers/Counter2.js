@@ -1,3 +1,4 @@
+import { ADD2 } from "../actions/actionTypes"
 
 
 const initialState = {
@@ -9,7 +10,7 @@ const initialState = {
 export default function Counter2(state = initialState, action) {
     //Важное правила Редьюсера - всегда возвращать новый обьект
     switch (action.type) {
-        case 'ADD2':
+        case ADD2:
             return {
                 counter2: state.counter2 + action.payload
             }
