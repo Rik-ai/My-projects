@@ -26,7 +26,7 @@ class App extends Component {
           <button onClick={() => this.props.onAddNumber(-17)}>Вычесть 17</button>
         </div>
         <div className="Actions">
-          <button onClick={() => this.props.onAddNumber(100)}>
+          <button onClick={() => this.props.onAsyncAdd(100)}>
             Асинхронно добавить 100
             </button>
         </div>
