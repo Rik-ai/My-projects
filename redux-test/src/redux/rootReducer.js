@@ -1,27 +1,8 @@
+import { combineReducers } from 'redux' //позволяет обьединять все редьюсеры в один который эта функция нам вернёт
 
+import Counter1 from './Reducers/Counter1'
+import Counter2 from './Reducers/Counter2'
 
-const initialState = {
-    counter: 0
-}
-
-
-
-export default function rootReducer(state = initialState, action) {
-    //Важное правила Редьюсера - всегда возвращать новый обьект
-    switch (action.type) {
-        case 'ADD':
-            return {
-                counter: state.counter + action.value + 1
-            }
-        case 'SUB':
-            return {
-                counter: state.counter - action.value - 1
-            }
-        case 'ADD_NUMBER':
-            return {
-                counter: state.counter + action.payload
-            }
-        default:
-            return state
-    }
-}
+export default combineReducers({
+    Counter1, Counter2
+})

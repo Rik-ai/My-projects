@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux' //HOC функция
 import './App.css'
+import Counter from './Counter'
 
 
 class App extends Component {
@@ -22,6 +23,8 @@ class App extends Component {
           <button onClick={() => this.props.onAddNumber(15)}>Добавить 15</button>
           <button onClick={() => this.props.onAddNumber(-17)}>Вычесть 17</button>
         </div>
+
+        <Counter />
       </div >
     )
   }
@@ -30,7 +33,7 @@ class App extends Component {
 function mapStateToProps(state) {
   return {
     //теперь каунтер можно использовать в Арр компоненте не как state а как props
-    counter: state.counter
+    counter: state.Counter1.counter
   }
 }
 
