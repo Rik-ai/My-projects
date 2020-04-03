@@ -5,7 +5,7 @@ import { GithubContext } from '../context/github/githubContext'
 
 export const Search = () => {
     const [value, setValue] = useState('') //первый параметр это стейтБ второй функция которая позволяет менять этот стейт
-    const { show } = useContext(AlertContext)
+    const alert = useContext(AlertContext)
     const github = useContext(GithubContext)
 
     const onSubmit = event => {
@@ -13,10 +13,14 @@ export const Search = () => {
             return
         }
 
+        // github.clearUsers() - эта хуйня которая должна чистить список почему-то не работает
+
+
         if (value.trim()) {
+            alert.hide()
             github.search(value.trim())
         } else {
-            show('Введите данные пользователя!')
+            alert.show('Введите данные пользователя!')
         }
 
     }
